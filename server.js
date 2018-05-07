@@ -1,8 +1,9 @@
 var express=require('express');
 var nodemailer = require("nodemailer");
+var bodyParser = require('body-parser')
 var app=express();
 
-
+app.use(bodyParser.json())
 
 app.get('/',function(req,res){
 res.sendfile('index.html');
@@ -12,8 +13,8 @@ var smtpTransport = nodemailer.createTransport({
     service: "gmail",
     host: "smtp.gmail.com",
     auth: {
-        user: "arekkoresp@gmail.com",
-        pass: "oong3ied"
+        user: "user@gmail.com",
+        pass: "password"
     }
 });
 
@@ -34,14 +35,6 @@ app.get('/send',function(req,res){
          }
 });
 });
-// app.get('/send',function(req,res){
-//     var mailOptions={
-//         to : req.query.to,
-//         subject : req.query.subject,
-//         text : req.query.text
-//     }
-
-
 
 
 
